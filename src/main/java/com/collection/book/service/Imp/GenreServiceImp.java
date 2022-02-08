@@ -1,6 +1,7 @@
 package com.collection.book.service.Imp;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.collection.book.model.Genre;
 import com.collection.book.repositories.GenreRepository;
@@ -23,6 +24,16 @@ public class GenreServiceImp implements GenreService {
     @Override
     public Genre addGenre(Genre genre) {
         return genreRepository.save(genre);
+    }
+
+    @Override
+    public String deleteGenre(Long id) {
+        Optional<Genre> genre = genreRepository.findById(id);
+        if (genre.isPresent()) {
+            genreRepository.deleteById(id);
+            return "Genre deleted";
+        }
+        return "Genre not found";
     }
 
 }

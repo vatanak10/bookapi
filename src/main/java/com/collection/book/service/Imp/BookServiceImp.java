@@ -1,6 +1,7 @@
 package com.collection.book.service.Imp;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.collection.book.dto.BodyRequestDto;
 import com.collection.book.model.Book;
@@ -39,6 +40,16 @@ public class BookServiceImp implements BookService {
     @Override
     public Book addBook(Book book) {
         return bookRepository.save(book);
+    }
+
+    @Override
+    public String deleteBook(Long id) {
+        Optional<Book> book = bookRepository.findById(id);
+        if (book.isPresent()) {
+            bookRepository.deleteById(id);
+            return "Book deleted";
+        }
+        return "Book not found";
     }
 
 }

@@ -11,4 +11,6 @@ public interface AuthorService {
     List<Author> getAllAuthors();
 
     Author addAuthor(Author author);
+
+    String deleteAuthor(Long id);
 }

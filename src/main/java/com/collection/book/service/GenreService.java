@@ -11,4 +11,6 @@ public interface GenreService {
     List<Genre> getAllGenres();
 
     Genre addGenre(Genre genre);
+
+    String deleteGenre(Long id);
 }

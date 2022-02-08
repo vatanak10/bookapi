@@ -1,6 +1,7 @@
 package com.collection.book.service.Imp;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.collection.book.model.Author;
 import com.collection.book.repositories.AuthorRepository;
@@ -23,6 +24,16 @@ public class AuthorServiceImp implements AuthorService {
     @Override
     public Author addAuthor(Author author) {
         return authorRepository.save(author);
+    }
+
+    @Override
+    public String deleteAuthor(Long id) {
+        Optional<Author> author = authorRepository.findById(id);
+        if (author.isPresent()) {
+            authorRepository.deleteById(id);
+            return "Author deleted";
+        }
+        return "Author not found";
     }
 
 }

@@ -49,7 +49,7 @@ public class Book implements Serializable {
     private String downloadUrl;
 
     @Column(name = "rating", nullable = true)
-    private Integer rating;
+    private Double rating;
 
     @Column(name = "created_date", nullable = true, updatable = false)
     private Date createdDate;
